@@ -1,0 +1,214 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>HTML chinelão</title>
+    <meta charset="utf-8">
+    <script type="text/javascript">
+
+        window.onload = function () {
+            var elem = document.getElementById("submitBtn");
+            elem.addEventListener("click", function (e) {
+                e.preventDefault();
+                if (validar(elem.form)){
+                    elem.form.submit();
+                }
+            })
+        }
+
+        //nome
+        function validaTexto(value) {
+            if (
+                    (!isNaN(value)) ||
+                    (value == "")
+            ) {
+                alert("O nome não é válido!");
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        // senha
+        function validaSenha(value) {
+            if (value.length >= 6) {
+                if (hasNumber(value)) {
+                    if (hasLowCarac(value)) {
+                        if (hasUpCarac(value)) {
+                            return true;
+                        } else {
+                            alert("A senha deverá ser composta por letras maiúsculas!");
+                            return false;
+                        }
+                    } else {
+                        alert("A senha deverá ser composta por letras minúsculas!");
+                        return false;
+                    }
+                } else {
+                    alert("A senha deverá ser composta por números!");
+                    return false;
+                }
+            } else {
+                alert("A senha deverá ser composta por 6 ou mais caracteres!");
+                return false;
+            }
+        }
+
+        //email
+        function validaEmail(value) {
+            if ((value.indexOf("@") > 0)
+                    && (value.lastIndexOf(".") > value.indexOf("@"))) {
+                return true;
+            } else {
+                alert("O email é inválido!");
+                return false;
+            }
+        }
+
+        function validaFone2(value) {
+            if (
+                    (value.length == 14)
+            ) {
+                return true;
+            } else{
+                alert("O telefone é inválido!");
+                return false;
+            }
+        }
+
+        function validaData(valueDate){
+
+            if(!Date.parse(valueDate)){
+                alert('A data é inválida');
+                return false;
+            }
+            return true;
+        }
+
+        function validaFone(element) {
+            var value = element.value;
+            if (value.length == 0) {
+                element.value = "(" + value;
+            }
+            if (value.length == 3) {
+                element.value = value + ") ";
+            }
+            if (value.length == 9) {
+                element.value = value + "-";
+            }
+            if (value.length >= 13) {
+                element.value = value.substring(0, 13);
+            }
+        }
+
+        function validar(elem) {
+            var nome = elem.nome;
+            var user = elem.user;
+            var senha = elem.senha;
+            var email = elem.email;
+            var fone = elem.fone;
+            var datanasc = elem.datanasc;
+
+            if (
+                    validaTexto(nome.value) &&
+                    validaTexto(user.value) &&
+                    validaSenha(senha.value) &&
+                    validaEmail(email.value) &&
+                    validaData(datanasc.value) &&
+                    validaFone2(fone.value)
+            ) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+
+        //Funcoes auxiliares
+        //verifica se existe um numero num texto
+        function hasNumber(value) {
+            var nums = "0123456789";
+
+            for (i = 0; i < value.length; i++) {
+                if (nums.indexOf(value.charAt(i), 0) != -1) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        // tem letras minusculas
+        function hasLowCarac(value) {
+            var caracs = "abcdefghyjklmnopqrstuvwxyz";
+
+            for (i = 0; i < value.length; i++) {
+                if (caracs.indexOf(value.charAt(i), 0) != -1) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        // tem letras minusculas
+        function hasUpCarac(value) {
+            var caracs = "ABCDEFGHYJKLMNOPQRSTUVWXYZ";
+
+            for (i = 0; i < value.length; i++) {
+                if (caracs.indexOf(value.charAt(i), 0) != -1) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
+    </script>
+
+</head>
+
+<body>
+<form action="" method="post" id="form">
+    <table>
+        <tr>
+            <td>Nome</td>
+            <td><input type="text" onblur="validaTexto(this.value)" id="nome" name="nome"></td>
+        </tr>
+        <tr>
+            <td>User</td>
+            <td><input type="text" onblur="validaTexto(this.value)" id="user" name="user"></td>
+        </tr>
+        <tr>
+            <td>Senha</td>
+            <td><input onblur="validaSenha(this.value)" type="password" id="senha" name="senha"></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input type="email" onblur="validaEmail(this.value)" id="email" name="email"></td>
+        </tr>
+        <tr>
+            <td>Telefone</td>
+            <td><input type="text" onkeypress="validaFone(this)" id="fone" name="fone"></td>
+        </tr>
+        <tr>
+            <td>Data de Nascimento</td>
+            <td><input type="date" id="datanasc" name="datanasc"></td>
+        </tr>
+        <tr>
+            <td>Sexo</td>
+            <td>
+                <select id="sexo" name="sexo">
+                    <option value="M">Masculino</option>
+                    <option value="F">Feminino</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" style="float: right;" id="submitBtn" value="Enviar">
+            </td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>
