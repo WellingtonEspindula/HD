@@ -1,5 +1,5 @@
 <?php
-define('BASE_URL', 'http://localhost/HD/Netbeans');
+define('BASE_URL', 'http://' . $_SERVER['HTTP_HOST']);
 ?>
 <!DOCTYPE HTML>
 <html lang="en">
