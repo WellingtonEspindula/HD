@@ -1,4 +1,6 @@
 <?php
+ini_set('display_errors', 1);
+
 require_once '../model/Email.php';
 require_once '../dao/daoemail.php';
 
@@ -43,205 +45,175 @@ $emails = $daoEmail->SelecionaEmails();
                                         ?>
                                         <div class="mail_list">
                                             <div class="right">
-                                                <h3><?php echo $email->getDestinatario(); ?>
+                                                <h3><a href="dashboard.php?id=<?php echo $email->getIdEmail(); ?>">
+                                                        <?php echo $email->getDestinatario(); ?>
+                                                    </a>
                                                     <small><?php echo $email->getHorario(); ?></small>
                                                 </h3>
-                                                <p>Ut enim ad minim veniam, quis nostrud exercitation enim ad minim
-                                                    veniam,
-                                                    quis nostrud exercitation...</p>
+                                                <p><?php echo $email->getType(); ?></p>
                                             </div>
                                         </div>
                                     <?php }
                                 endforeach; ?>
 
-                                <div class="mail_list">
-                                    <div class="left">
-                                        .
-                                    </div>
-                                    <div class="right">
-                                        <h3>Debbis &amp; Raymond
-                                            <small>4.09 PM</small>
-                                        </h3>
-                                        <p>Ut enim ad minim veniam, quis nostrud exercitation enim ad minim veniam, quis
-                                            nostrud exercitation...</p>
-                                    </div>
-                                </div>
-                                <div class="mail_list">
-                                    <div class="left">
-                                        <i class="fa fa-circle"></i> <i class="fa fa-edit"></i>
-                                    </div>
-                                    <div class="right">
-                                        <h3>Dennis Mugo
-                                            <small>3.00 PM</small>
-                                        </h3>
-                                        <p>Ut enim ad minim veniam, quis nostrud exercitation enim ad minim veniam, quis
-                                            nostrud exercitation...</p>
-                                    </div>
-                                </div>
-                                <div class="mail_list">
-                                    <div class="left">
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                    <div class="right">
-                                        <h3>Jane Nobert
-                                            <small>4.09 PM</small>
-                                        </h3>
-                                        <p>Ut enim ad minim veniam, quis nostrud exercitation enim ad minim veniam, quis
-                                            nostrud exercitation...</p>
-                                    </div>
-                                </div>
-
 
                             </div>
-                            <!-- /MAIL LIST -->
-
-                            <?php
-                                if (isset($_GET["id"])){
-                                    
-                                } else {
-
-                                }
-
-                            ?>
-                            <!-- CONTENT MAIL -->
-                            <div class="col-sm-9 mail_view">
-                                <div class="inbox-body">
-                                    <div class="mail_heading row">
-                                        <div class="col-md-8">
-                                            <div class="compose-btn">
-                                                <a class="btn btn-sm btn-primary" href="mail_compose.html"><i
-                                                        class="fa fa-reply"></i> Reply</a>
-                                                <button title="" class="btn  btn-sm tooltips" type="button"
-                                                        data-toggle="tooltip" data-original-title="Print"
-                                                        data-placement="top"><i class="fa fa-print"></i></button>
-                                                <button title="" class="btn btn-sm tooltips" data-toggle="tooltip"
-                                                        data-original-title="Trash" data-placement="top"><i
-                                                        class="fa fa-trash-o"></i>
-                                                </button>
-                                            </div>
-
-                                        </div>
-                                        <div class="col-md-4 text-right">
-                                            <p class="date"> 8:02 PM 12 FEB 2014</p>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <h4> Donec vitae leo at sem lobortis porttitor eu consequat risus. Mauris
-                                                sed congue orci. Donec ultrices faucibus rutrum.</h4>
-                                        </div>
-                                    </div>
-                                    <div class="sender-info">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <strong>Jon Doe</strong>
-                                                <span>(jon.doe@gmail.com)</span> to
-                                                <strong>me</strong>
-                                                <a class="sender-dropdown"><i class="fa fa-chevron-down"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="view-mail">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                            consequat.
-                                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
-                                            eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                                            sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
-                                        <p>Riusmod tempor incididunt ut labor erem ipsum dolor sit amet, consectetur
-                                            adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                                            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-                                            officia deserunt
-                                            mollit anim id est laborum.</p>
-                                        <p>Modesed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                                            enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                            aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                                            voluptate
-                                            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                                            cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-                                            est laborum.</p>
-                                    </div>
-                                    <div class="attachment">
-                                        <p>
-                                            <span><i class="fa fa-paperclip"></i> 3 attachments — </span>
-                                            <a href="#">Download all attachments</a> |
-                                            <a href="#">View all images</a>
-                                        </p>
-                                        <ul>
-                                            <li>
-                                                <a class="atch-thumb" href="#">
-                                                    <img alt="img" src="images/1.png">
-                                                </a>
-
-                                                <div class="file-name">
-                                                    image-name.jpg
-                                                </div>
-                                                <span>12KB</span>
 
 
-                                                <div class="links">
-                                                    <a href="#">View</a> -
-                                                    <a href="#">Download</a>
-                                                </div>
-                                            </li>
-
-                                            <li>
-                                                <a class="atch-thumb" href="#">
-                                                    <img alt="img" src="images/1.png">
-                                                </a>
-
-                                                <div class="file-name">
-                                                    img_name.jpg
-                                                </div>
-                                                <span>40KB</span>
-
-                                                <div class="links">
-                                                    <a href="#">View</a> -
-                                                    <a href="#">Download</a>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <a class="atch-thumb" href="#">
-                                                    <img alt="img" src="images/1.png">
-                                                </a>
-
-                                                <div class="file-name">
-                                                    img_name.jpg
-                                                </div>
-                                                <span>30KB</span>
-
-                                                <div class="links">
-                                                    <a href="#">View</a> -
-                                                    <a href="#">Download</a>
-                                                </div>
-                                            </li>
-
-                                        </ul>
-                                    </div>
-                                    <div class="compose-btn pull-left">
-                                        <a class="btn btn-sm btn-primary" href="mail_compose.html"><i
-                                                class="fa fa-reply"></i> Reply</a>
-                                        <button class="btn btn-sm "><i class="fa fa-arrow-right"></i> Forward</button>
-                                        <button title="" class="btn  btn-sm tooltips" type="button"
-                                                data-toggle="tooltip" data-original-title="Print" data-placement="top">
-                                            <i class="fa fa-print"></i></button>
-                                        <button title="" class="btn btn-sm tooltips" data-toggle="tooltip"
-                                                data-original-title="Trash" data-placement="top"><i
-                                                class="fa fa-trash-o"></i>
-                                        </button>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <!-- /CONTENT MAIL -->
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+
+    <div class="page-title">
+        <div class="title_left">
+            <h3>
+                Invoice
+                <small>
+                    Some examples to get you started
+                </small>
+            </h3>
+        </div>
+
+        <div class="title_right">
+            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                  <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Go!</button>
+                        </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+
+    <div class="row">
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_content">
+                <table id="example" class="table table-striped responsive-utilities jambo_table">
+                    <thead>
+                    <tr class="headings">
+                        <th>Invoice</th>
+                        <th>Invoice Date</th>
+                        <th>Order</th>
+                        <th>Bill to Name</th>
+                        <th>Status</th>
+                        <th>Amount</th>
+                        <th class=" no-link last"><span class="nobr">Action</span>
+                        </th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr class="even pointer">
+                        <td class=" ">121000040</td>
+                        <td class=" ">May 23, 2014 11:47:56 PM</td>
+                        <td class=" ">121000210 <i class="success fa fa-long-arrow-up"></i>
+                        </td>
+                        <td class=" ">John Blank L</td>
+                        <td class=" ">Paid</td>
+                        <td class="a-right a-right ">$7.45</td>
+                        <td class=" last"><a href="#">View</a>
+                        </td>
+                    </tr>
+                    <tr class="odd pointer">
+                        <td class=" ">121000039</td>
+                        <td class=" ">May 23, 2014 11:30:12 PM</td>
+                        <td class=" ">121000208 <i class="success fa fa-long-arrow-up"></i>
+                        </td>
+                        <td class=" ">John Blank L</td>
+                        <td class=" ">Paid</td>
+                        <td class="a-right a-right ">$741.20</td>
+                        <td class=" last"><a href="#">View</a>
+                        </td>
+                    </tr>
+                    <tr class="even pointer">
+                        <td class=" ">121000038</td>
+                        <td class=" ">May 24, 2014 10:55:33 PM</td>
+                        <td class=" ">121000203 <i class="success fa fa-long-arrow-up"></i>
+                        </td>
+                        <td class=" ">Mike Smith</td>
+                        <td class=" ">Paid</td>
+                        <td class="a-right a-right ">$432.26</td>
+                        <td class=" last"><a href="#">View</a>
+                        </td>
+                    </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- bootstrap progress js -->
+    <script src="<?php echo BASE_URL ?>/static/js/progressbar/bootstrap-progressbar.min.js"></script>
+    <script src="<?php echo BASE_URL ?>/static/js/nicescroll/jquery.nicescroll.min.js"></script>
+    <!-- icheck -->
+    <script src="<?php echo BASE_URL ?>/static/js/icheck/icheck.min.js"></script>
+
+    <script src="<?php echo BASE_URL ?>/static/js/custom.js"></script>
+
+
+    <!-- Datatables -->
+    <script src="<?php echo BASE_URL ?>/static/js/datatables/js/jquery.dataTables.js"></script>
+    <script src="<?php echo BASE_URL ?>/static/js/datatables/tools/js/dataTables.tableTools.js"></script>
+
+    <!-- pace -->
+    <script src="<?php echo BASE_URL ?>/static/js/pace/pace.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('input.tableflat').iCheck({
+                checkboxClass: 'icheckbox_flat-green',
+                radioClass: 'iradio_flat-green'
+            });
+        });
+
+        var asInitVals = new Array();
+        $(document).ready(function () {
+            var oTable = $('#example').dataTable({
+                "oLanguage": {
+                    "sSearch": "Search all columns:"
+                },
+                "aoColumnDefs": [{
+                    'bSortable': false,
+                    'aTargets': [0]
+                } //disables sorting for column one
+                ],
+                'iDisplayLength': 12,
+                "sPaginationType": "full_numbers",
+                "dom": 'T<"clear">lfrtip',
+                "tableTools": {
+                    "sSwfPath": "<?php echo BASE_URL; ?>/static/js/datatables/tools/swf/copy_csv_xls_pdf.swf"
+                }
+            });
+            $("tfoot input").keyup(function () {
+                /* Filter on the column based on the index of this element's parent <th> */
+                oTable.fnFilter(this.value, $("tfoot th").index($(this).parent()));
+            });
+            $("tfoot input").each(function (i) {
+                asInitVals[i] = this.value;
+            });
+            $("tfoot input").focus(function () {
+                if (this.className == "search_init") {
+                    this.className = "";
+                    this.value = "";
+                }
+            });
+            $("tfoot input").blur(function (i) {
+                if (this.value == "") {
+                    this.className = "search_init";
+                    this.value = asInitVals[$("tfoot input").index(this)];
+                }
+            });
+        });
+    </script>
+
 <?php
 include 'default/bottom.php';
 ?>

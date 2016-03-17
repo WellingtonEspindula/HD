@@ -13,6 +13,13 @@
 
     <title>Sistema de envio de emails</title>
 
+
+    <!-- Custom styling plus plugins -->
+    <link href="<?php echo BASE_URL; ?>/static/css/custom.css" rel="stylesheet">
+    <link href="<?php echo BASE_URL; ?>/static/css/icheck/flat/green.css" rel="stylesheet">
+    <link href="<?php echo BASE_URL; ?>/static/css/datatables/tools/css/dataTables.tableTools.css" rel="stylesheet">
+
+
     <!-- Bootstrap core CSS -->
 
     <link href="<?php echo BASE_URL; ?>/static/css/bootstrap.min.css" rel="stylesheet">
@@ -60,7 +67,7 @@
                  style="outline: invert; cursor: url(http://www.google.com/intl/en_ALL/mapfiles/openhand.cur), n-resize; overflow-x: hidden; overflow-y: hidden;">
 
                 <div class="navbar nav_title" style="border: 0;">
-                    <a class="site_title" href="index.html"><i class="fa fa-comment"></i> <span>Emails!</span></a>
+                    <a class="site_title"><i class="fa fa-comment"></i> <span>Emails!</span></a>
                 </div>
                 <div class="clearfix"></div>
 

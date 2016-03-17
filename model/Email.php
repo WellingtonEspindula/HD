@@ -6,22 +6,18 @@ class Email {
     private $horario;
     private $host;
     private $situacao;
+    private $type;
 
 
     public function __construct() {
     }
 
-    /**
-     * @return mixed
-     */
+
     public function getSituacao()
     {
         return $this->situacao;
     }
 
-    /**
-     * @param mixed $situacao
-     */
     public function setSituacao($situacao)
     {
         $this->situacao = $situacao;
@@ -57,6 +53,22 @@ class Email {
 
     public function setHost(Host $host) {
         $this->host = $host;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param mixed $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
     }
 
 
