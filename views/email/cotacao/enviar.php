@@ -53,7 +53,7 @@ include_once '../../default/top.php';
         $bool2 = $enviarEmailCotacao->sendMail($emailCotacao);
 
         if ($bool2) {
-            header("location:../../../");
+            //redirect("views/dashboard.php");
         } else {
             $daoEmailCotacao->emailNaoEnviado($emailCotacao->getIdEmail());
             echo '<script language="javascript">';

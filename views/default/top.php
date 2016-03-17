@@ -1,7 +1,6 @@
 <?php
 define('BASE_URL', 'http://localhost/HD/Netbeans');
 ?>
-
 <!DOCTYPE HTML>
 <html lang="en">
 <head>

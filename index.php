@@ -1,10 +1,9 @@
 <?php
 
+require_once 'util/redirect.php';
 
-$url = 'http://' . $_SERVER['HTTP_HOST'];
-$url .= rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-$url .= '/views/dashboard.php';
-header('Location: ' . $url);
+$url = '/views/dashboard.php';
+redirect($url);
 
 
 ?>

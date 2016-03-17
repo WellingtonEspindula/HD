@@ -22,7 +22,7 @@ if (isset($_POST['nome'])) {
 
 
     if ($bool) {
-        header("location: list.php");
+        //redirect("views/host/list.php");
     } else {
         echo '<script language="javascript">';
         echo 'var aux = confirm("Ocorreu um erro durante a modificação de registro!");';

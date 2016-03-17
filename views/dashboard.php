@@ -62,14 +62,18 @@ $emails = $daoEmail->SelecionaEmails();
         </div>
     </div>
 
+
     <!-- bootstrap progress js -->
+    <!--
     <script src="<?php echo BASE_URL ?>/static/js/progressbar/bootstrap-progressbar.min.js"></script>
     <script src="<?php echo BASE_URL ?>/static/js/nicescroll/jquery.nicescroll.min.js"></script>
+    -->
     <!-- icheck -->
+
     <script src="<?php echo BASE_URL ?>/static/js/icheck/icheck.min.js"></script>
-
+    <!--
     <script src="<?php echo BASE_URL ?>/static/js/custom.js"></script>
-
+    -->
 
     <!-- Datatables -->
     <script src="<?php echo BASE_URL ?>/static/js/datatables/js/jquery.dataTables.js"></script>
@@ -88,6 +92,7 @@ $emails = $daoEmail->SelecionaEmails();
         var asInitVals = new Array();
         $(document).ready(function () {
             var oTable = $('#example').dataTable({
+                "order": [[2, "desc"]],
                 "oLanguage": {
                     "sSearch": "Search all columns:"
                 },
@@ -102,6 +107,7 @@ $emails = $daoEmail->SelecionaEmails();
                 "tableTools": {
                     "sSwfPath": "<?php echo BASE_URL; ?>/static/js/datatables/tools/swf/copy_csv_xls_pdf.swf"
                 }
+
             });
             $("tfoot input").keyup(function () {
                 /* Filter on the column based on the index of this element's parent <th> */

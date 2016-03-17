@@ -8,7 +8,7 @@ if (isset($_GET['id'])) {
 
 
     if ($bool) {
-        header("location:list.php");
+        //redirect("views/host/list.php");
     } else {
         echo '<script language="javascript">';
         echo 'var aux = confirm("Ocorreu um erro ao excluir registro! Possivelmente, existem emails que foram enviados utilizando esse domínio.");';

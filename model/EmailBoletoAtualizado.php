@@ -25,9 +25,5 @@ class EmailBoletoAtualizado extends Email{
         $this->vencimento = $vencimento;
     }
 
-    public function __toString() {
-        return $this->getIdEmail();
-    }
-
 }
 ?>

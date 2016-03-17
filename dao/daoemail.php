@@ -36,6 +36,25 @@ class DaoEmail
         return $p_sql->fetchAll(PDO::FETCH_CLASS, "Email");
     }
 
+    public function SelecionaEmail($id)
+    {
+        $sql = "SELECT email.idEmail, DESTINATÁRIO as destinatario, horario, HOST_idHOST as `host`, situacao, "
+            . "( CASE "
+            . " WHEN email_boleto_atl.EMAIL_idEMAIL IS NOT NULL THEN 'Boleto atualizado' "
+            . " WHEN email_cotacao.EMAIL_idEMAIL IS NOT null THEN 'Cotação' "
+            . " END "
+            . ") AS type "
+            . "FROM email "
+            . "LEFT JOIN email_boleto_atl ON email.idEMAIL = email_boleto_atl.EMAIL_idEMAIL "
+            . "LEFT JOIN email_cotacao ON email.idEMAIL = email_cotacao.EMAIL_idEMAIL "
+            . "WHERE idEMAIL = :id;";
+        $p_sql = Conexao::getInstance()->prepare($sql);
+        $p_sql->bindValue(":id", $id);
+        $p_sql->execute();
+        $p_sql->setFetchMode(PDO::FETCH_CLASS, "Email");
+        return $p_sql->fetch();
+    }
+
     //deprecaated method
     public function selectMostRecentEmail()
     {

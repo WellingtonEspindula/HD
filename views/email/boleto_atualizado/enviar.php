@@ -62,7 +62,7 @@ include_once '../../default/top.php';
             $bool2 = $mailBoletoAtualizado->sendMail($emailBoletoAtualizado);
 
             if ($bool2) {
-                header("location:../../../");
+                //redirect("views/dashboard.php");
             } else {
                 echo '<script language="javascript">';
                 echo 'var aux = confirm("Ocorreu um erro durante o envio ou inserção do registro de email!");';
