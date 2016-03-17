@@ -1,5 +1,5 @@
 <?php
-define('BASE_URL', 'http://' . $_SERVER['HTTP_HOST']);
+define('BASE_URL', 'http://' . $_SERVER['HTTP_HOST']) . '/HD';
 ?>
 <!DOCTYPE HTML>
 <html lang="en">
