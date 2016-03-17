@@ -1,5 +1,5 @@
 <?php
-    define('BASE_URL', 'http://localhost/HD/Netbeans');
+define('BASE_URL', 'http://localhost/HD/Netbeans');
 ?>
 
 <!DOCTYPE HTML>
@@ -92,7 +92,8 @@
                                 <ul class="nav child_menu" style="display: none;">
                                     <li><a href="<?= BASE_URL ?>/views/email/cotacao/enviar.php">Cotação</a>
                                     </li>
-                                    <li><a href="<?= BASE_URL ?>/views/email/boleto_atualizado/enviar.php">Boleto Atualizado</a>
+                                    <li><a href="<?= BASE_URL ?>/views/email/boleto_atualizado/enviar.php">Boleto
+                                            Atualizado</a>
                                     </li>
                                 </ul>
                             </li>

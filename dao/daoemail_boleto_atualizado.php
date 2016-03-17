@@ -60,6 +60,23 @@ class DaoEmailBoletoAtualizado
         }
     }
 
+    public function SelectionaBoletoAtualizado($id)
+    {
+        try {
+            $sql = "SELECT idEmail, DESTINATÁRIO as destinatario, horario, HOST_idHOST as `host`, situacao, num_nota, vencimento "
+                . "FROM email_boleto_atl "
+                . " JOIN email ON email_boleto_atl.EMAIL_idEMAIL = email.idEMAIL "
+                . "WHERE idEMAIL = :id;";
+
+            $p_sql = Conexao::getInstance()->prepare($sql);
+            $p_sql->bindValue(":id", $id);
+            $p_sql->execute();
+            return $p_sql->fetch(PDO::FETCH_CLASS, 'EmailBoletoAtualizado');
+        } catch (Exception $ex) {
+            return false;
+        }
+    }
+
     public function SelecionaAnexosPorID($id)
     {
         try {
@@ -79,6 +96,51 @@ class DaoEmailBoletoAtualizado
         } catch (Exception $ex) {
 
         }
+    }
+
+    public function getTextoEmailBoletoAtualizado($id)
+    {
+        $daoBoletoAtualizado = $this::getInstance();
+        $emailBoletoAtualizado = $daoBoletoAtualizado->SelectionaBoletoAtualizado($id);
+
+        $html = "<p>Bom dia</p>
+                        <br>
+                        <p>Segue em anexo a 2ª via atualizada do boleto conforme solicitado.</p>
+                        <table>
+                            <tr>
+                                <td><strong>Nº doc:</strong></td>
+                                <td> " . $emailBoletoAtualizado->getNumeroNota() . "</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Vencimento:</strong></td>
+                                <td> " . date_format(date_create($emailBoletoAtualizado->getVencimento()), "d/m/Y") . "</td>
+                            </tr>
+                        </table>
+                        <br>
+                        <p>
+                        OBS.:<br>
+                        FOI VERIFICADO A OCORRÊNCIA DE FALHAS NO ENVIO DOS BOLETOS POR PARTE DE NOSSOS PRESTADORES DE SERVIÇO, BANCO DO ESTADO DO RIO GRANDE DO SUL (BANRISUL) E AGÊNCIA DOS CORREIOS. POR ESSE MOTIVO ESTAMOS REENVIANDO AOS NOSSOS CLIENTES SEUS BOLETOS.<br>
+                        CASO JÁ TENHA RECEBIDO SEU BOLETO, DESCONSIDERE ESSE E-MAIL.<br>
+                        <br>
+                        <strong>
+                        *POR GENTILEZA CONFIRMAR RECEBIMENTO DE E-MAIL.
+                        </strong>
+                        </p>
+                        <br>
+                        <p>Att,
+                        <br><br><br>
+                        <strong>
+                        HD HIDROQUIMICA
+                        <br><br>
+                        Marques e Agliardi Ltda.<br>
+                        CNPJ: 06.263.956/0001-62<br>
+                        BR 101 Km 98 nº 2010<br>
+                        Osório/RS<br>
+                        (51) 3663-6363
+                        </strong>
+                        </p>";
+
+        return $html;
     }
 
     public function emailNaoEnviado($id)

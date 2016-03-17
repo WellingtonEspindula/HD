@@ -10,6 +10,12 @@ require_once '../dao/daoemail_boleto_atualizado.php';
 $daoEmail = DaoEmail::getInstance();
 
 ?>
+<a href="dashboard.php">
+    <i class="fa fa-chevron-left"></i>
+    Voltar
+</a>
+<br>
+<br>
 <h3>Email enviado</h3>
 <div class="ln_solid"></div>
 <div class="x_panel">
@@ -45,7 +51,28 @@ $daoEmail = DaoEmail::getInstance();
 
             <?php
         } else if ($type == "Boleto atualizado") {
+            $daoEmailBoletoAtl = DaoEmailBoletoAtualizado::getInstance();
+            //$emailBoletoAtl = $daoEmailBoletoAtl->($id);
+            ?>
+            <div class="x_title">
+                <h4> <?php echo $type ?></h4>
+                <div class="row">
+                    <div class="col-md-12">
+                        Destinatário: <strong><?php echo $emailCotacao->getDestinatario() ?></strong>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        Horário: <strong><?php echo $emailCotacao->getHorario() ?></strong>
+                    </div>
+                </div>
+            </div>
 
+            <div class="x_content">
+                <p><?php echo $daoEmailCotacao->getTextoEmailCotacao($id) ?></p>
+            </div>
+
+            <?php
         }
     } else {
         echo "Página inválida!";
